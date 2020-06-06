@@ -1,6 +1,13 @@
 const calc = (x1, y1, x2, y2) => {
   const A = [x1, y1];
   const B = [x2, y2];
+
+  if (
+    [x1, y1, x2, y2].includes(undefined) ||
+    [x1, y1, x2, y2].some((v) => v < 0)
+  ) {
+    return null;
+  }
   function slope(a, b) {
     if (a[0] == b[0]) {
       return null;
@@ -21,22 +28,15 @@ const calc = (x1, y1, x2, y2) => {
   const m = slope(A, B);
   const b = intercept(A, m);
 
-  console.log('m', m);
-  console.log('b', b);
-
   let coordinates = [];
   if (A[0] > B[0]) {
     for (let x = A[0]; x > 0; x--) {
-      console.log('x', x);
       let y = m * x + b;
-      console.log('y', y);
       coordinates.push({ x: x, y: y });
     }
   } else {
     for (let x = A[0]; x <= B[0]; x++) {
-      console.log('x', x);
       let y = m * x + b;
-      console.log('y', y);
       coordinates.push({ x: x, y: y });
     }
   }
