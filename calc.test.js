@@ -60,3 +60,35 @@ test('right down diagonal', () => {
     { x: 1, y: 3 },
   ]);
 });
+
+test('vertical line down', () => {
+  expect(calc(3, 1, 3, 3)).toMatchObject([
+    { x: 3, y: 1 },
+    { x: 3, y: 2 },
+    { x: 3, y: 3 },
+  ]);
+});
+
+test('vertical line up', () => {
+  expect(calc(3, 3, 3, 1)).toMatchObject([
+    { x: 3, y: 3 },
+    { x: 3, y: 2 },
+    { x: 3, y: 1 },
+  ]);
+});
+
+test('horizontal line right', () => {
+  expect(calc(1, 1, 3, 1)).toMatchObject([
+    { x: 1, y: 1 },
+    { x: 2, y: 1 },
+    { x: 3, y: 1 },
+  ]);
+});
+
+test('horizontal line left', () => {
+  expect(calc(3, 1, 1, 1)).toMatchObject([
+    { x: 3, y: 1 },
+    { x: 2, y: 1 },
+    { x: 1, y: 1 },
+  ]);
+});

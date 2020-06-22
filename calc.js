@@ -29,19 +29,30 @@ const calc = (x1, y1, x2, y2) => {
   const b = intercept(A, m);
 
   let coordinates = [];
-  if (A[0] > B[0]) {
+
+  if (A[0] == B[0] && A[1] > B[1]) {
+    for (let y = A[0]; y > 0; y--) {
+      let x = m * y + b;
+      coordinates.push({ x: x, y: y });
+    }
+  } else if (A[0] == B[0] && A[1] < B[1]) {
+    for (let y = A[1]; y <= B[0]; y++) {
+      let x = m * y + b;
+      coordinates.push({ x: x, y: y });
+    }
+  } else if (A[0] > B[0]) {
     for (let x = A[0]; x > 0; x--) {
       let y = m * x + b;
       coordinates.push({ x: x, y: y });
     }
-  } else {
+  } else if (A[0] < B[0]) {
     for (let x = A[0]; x <= B[0]; x++) {
       let y = m * x + b;
       coordinates.push({ x: x, y: y });
     }
   }
 
-  console.log('coordinates', coordinates);
+  // console.log('coordinates', coordinates);
   return coordinates;
 };
 
